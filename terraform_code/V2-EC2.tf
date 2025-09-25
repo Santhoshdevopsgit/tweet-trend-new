@@ -7,6 +7,7 @@ resource "aws_instance" "demo-server" {
   instance_type          = "t2.micro"
   key_name               = "ddp"
   vpc_security_group_ids = [aws_security_group.demo-sg.id]
+  aws_subnet_id = aws_subnet.dpp-public-subnet-01.id
 
   tags = {
     Name = "demo-server"
@@ -16,6 +17,7 @@ resource "aws_instance" "demo-server" {
 resource "aws_security_group" "demo-sg" {
   name        = "demo-sg"
   description = "Allow SSH access"
+  vpc_id = aws_vpc.dpp-vpc
 
   ingress {
     description = "SSH access"
