@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "demo-server" {
-  for_each = toset(["jenkins-master", "jenkins-slave", "ansible"])
+  for_each = toset(["jenkins-master", "build-slave", "ansible"])
 
   ami                    = "ami-02d26659fd82cf299"
   instance_type          = "t2.micro"
